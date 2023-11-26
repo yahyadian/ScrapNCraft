@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="brak_brown">#765827</color>
+    <color name="olivetone">#767327</color>
+    <color name="chocolate_rain">#6d5129</color>
+
+    <color name="transparent_white">#80FFFFFF</color>
+    <color name="transparent_brak_brown">#90765827</color>
+    <color name="transparent_olivetone">#80767327</color>
+    <color name="transparent_chocolate_rain">#804c381c</color>
 </resources>

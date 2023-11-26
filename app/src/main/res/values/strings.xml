@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">ScrapNCraft</string>
+    <string name="app_name">Scrap \'n\' Craft</string>
+
+    //Splash Screen
+    <string name="tv_title_1">Scrap</string>
+    <string name="tv_title_2">\'n\'</string>
+    <string name="tv_title_3">Craft</string>
+    <string name="tv_splash_screen">Unlock Your Creativity with Scrap \'n\' Craft! Learn to Transform Waste into Wonderful Crafts. Join the Movement for a Greener Tomorrow. Reduce, Reuse, Recreate. Together, Let\'s Make a Difference!</string>
+
+    //Register Activity and Login Activity
+    <string name="tv_title_regis">Sign Up</string>
+    <string name="tv_title_login">Sign In</string>
+    <string name="ed_email">Email</string>
+    <string name="ed_password">Password</string>
+    <string name="btn_signup">Sign Up</string>
+    <string name="btn_signin">Sign In</string>
+    <string name="btn_signup_with_google">Sign Up with Google</string>
+    <string name="btn_signin_with_google">Sign In with Google</string>
+    <string name="tv_login">Already have an account?</string>
+    <string name="tv_regis">Don\'t have an account?</string>
 </resources>
