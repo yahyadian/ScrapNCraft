@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.explore.ExploreFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="60dp"
+            android:hint="@string/search_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </com.google.android.material.search.SearchBar>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/tv_organik"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/nunito" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/common_chalcedony"
+                android:text="@string/tv_organik_decoration"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito"/>
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/common_chalcedony"
+                android:text="@string/tv_organik_fungsional"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/tv_nonorganik"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/nunito" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/common_chalcedony"
+                android:text="@string/tv_nonorganik_kompos"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito"/>
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/common_chalcedony"
+                android:text="@string/tv_nonorganik_etc"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|end"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="70dp"
+                android:backgroundTint="@color/brak_brown"
+                app:srcCompat="@drawable/ic_add_camera"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
