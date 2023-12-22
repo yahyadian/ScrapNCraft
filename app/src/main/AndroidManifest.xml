@@ -19,13 +19,16 @@
         android:theme="@style/Theme.ScrapnCraft"
         tools:targetApi="31">
         <activity
+            android:name=".ui.main.explore.search.CategoryNonOrganicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.explore.search.CategoryOrganicActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detailcrafts.DetailCraftsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.addcrafts.AddCraftsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.explore.camera.PreviewActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.explore.camera.CameraActivity"

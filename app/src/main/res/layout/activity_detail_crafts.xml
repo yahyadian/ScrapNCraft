@@ -5,178 +5,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|top"
-        android:orientation="vertical"
-        tools:context=".ui.detail_crafts.DetailCraftsActivity" >
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_crafts"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/designer_white"
-            android:src="@drawable/item_crafts"
-            android:scaleType="fitXY" />
-
-        <TextView
-            android:id="@+id/tv_crafts_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/title_crafts"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/nunito" />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.5"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/item_photo_user"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/avatars" />
+            android:layout_height="match_parent"
+            android:gravity="center|top"
+            android:orientation="vertical"
+            tools:context=".ui.detail_crafts.DetailCraftsActivity" >
 
             <TextView
-                android:id="@+id/item_user"
+                android:id="@+id/tv_crafts_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                tools:text="@string/tv_user" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_crafts_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/pt_sans"
-            android:gravity="top"
-            tools:text="@tools:sample/lorem" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/tv_title_material_tool"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/nunito" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito"
+                tools:text="@string/title_crafts"/>
 
             <TextView
-                android:id="@+id/tv_crafts_no_material"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="1."
-                android:textSize="14sp"
-                android:fontFamily="@font/pt_sans" />
-
-            <TextView
-                android:id="@+id/tv_crafts_material"
+                android:id="@+id/tv_crafts_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="12sp"
                 android:fontFamily="@font/pt_sans"
+                android:gravity="top"
+                android:lines="5"
+                android:maxLines="5"
                 tools:text="@tools:sample/lorem" />
 
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:visibility="visible"
-            android:background="@color/orochimaru" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/tv_title_steps"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/nunito" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
-
             <TextView
-                android:id="@+id/tv_crafts_no_step"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="1."
-                android:textSize="14sp"
-                android:fontFamily="@font/pt_sans" />
-
-            <TextView
-                android:id="@+id/tv_crafts_step"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/pt_sans"
-                tools:text="@tools:sample/lorem" />
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/tv_title_material_tool"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_materials_tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_materials_tools"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/tv_title_steps"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/nunito" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_steps"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="105dp"
-            android:layout_height="105dp"
-            android:layout_gravity="start"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/orochimaru" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:visibility="visible"
-            android:background="@color/orochimaru" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

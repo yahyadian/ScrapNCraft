@@ -10,7 +10,9 @@ import android.view.Surface
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
@@ -18,12 +20,17 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.bangkit.scrapncraft.R
 import com.bangkit.scrapncraft.databinding.ActivityCameraBinding
+import com.bangkit.scrapncraft.utils.ImageClassifierHelper
 import com.bangkit.scrapncraft.utils.createCustomTempFile
+import org.tensorflow.lite.task.vision.classifier.Classifications
+import java.text.NumberFormat
+import java.util.concurrent.Executors
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
+    private lateinit var imageClassifierHelper: ImageClassifierHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,15 +54,64 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        imageClassifierHelper =
+            ImageClassifierHelper(
+                context = this,
+                imageClassifierListener = object : ImageClassifierHelper.ClassifierListener {
+                    override fun onError(error: String) {
+                        runOnUiThread {
+                            Toast.makeText(this@CameraActivity, error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
+                        runOnUiThread {
+                            results?.let { it ->
+                                if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
+                                    val sortedCategories = it[0].categories.sortedByDescending { it?.score }
 
+                                    val topResults = sortedCategories.take(3)
+                                    val displayResult =
+                                        topResults.joinToString("\n") {
+                                            "${it.label} " + NumberFormat.getPercentInstance().format(it.score).trim()
+                                        }
+                                    binding.tvResult.text = displayResult
+
+                                    val highestResult = topResults[0]
+
+                                    highestResult?.let {
+                                        val sendResult = "${it.label} "
+
+                                        val intent = Intent("UPDATE_SEARCH_ACTION")
+                                        intent.putExtra("HIGHEST_RESULT", it.label)
+                                        sendBroadcast(intent)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
             val preview = Preview.Builder()
+                .setTargetAspectRatio(AspectRatio.RATIO_4_3)
                 .build()
                 .also {
                     it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
                 }
+
+            val imageAnalyzer =
+                ImageAnalysis.Builder()
+                    .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                    .setTargetRotation(binding.viewFinder.display.rotation)
+                    .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                    .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
+                    .build()
+                    .also {
+                        it.setAnalyzer(Executors.newSingleThreadExecutor()) { image ->
+                            imageClassifierHelper.classify(image)
+                        }
+                    }
 
             imageCapture = ImageCapture.Builder().build()
 
@@ -65,15 +121,11 @@ class CameraActivity : AppCompatActivity() {
                     this,
                     cameraSelector,
                     preview,
+                    imageAnalyzer,
                     imageCapture
                 )
             } catch (exc: Exception) {
-                Toast.makeText(
-                    this@CameraActivity,
-                    "Gagal memunculkan kamera.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.e(TAG, "startCamera: ${exc.message}")
+                Toast.makeText(this, "Gagal memunculkan kamera.", Toast.LENGTH_SHORT).show()
             }
         }, ContextCompat.getMainExecutor(this))
     }

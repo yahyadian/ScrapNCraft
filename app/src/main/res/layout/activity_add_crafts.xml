@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.addcrafts.AddCraftsActivity">
 
     <LinearLayout
@@ -12,84 +13,108 @@
         android:gravity="center|top"
         android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/btn_add_img_crafts"
+        <EditText
+            android:id="@+id/ed_title_crafts"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/designer_white"
-            android:src="@drawable/ic_camera"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:paddingTop="5dp"
-            app:boxBackgroundColor="@color/designer_white" >
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/bg_form"
+            android:hint="@string/ed_title"
+            android:textColor="@color/brak_brown"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:fontFamily="@font/pt_sans"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_title_crafts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/ed_title"
-                android:textColor="@color/brak_brown"
-                android:inputType="text"
-                android:fontFamily="@font/nunito" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/ed_desc_craft"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            app:boxBackgroundColor="@color/designer_white" >
+            android:gravity="start"
+            android:paddingTop="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/bg_form"
+            android:lines="5"
+            android:maxLines="5"
+            android:hint="@string/ed_desc"
+            android:textColor="@color/brak_brown"
+            android:textSize="16sp"
+            android:fontFamily="@font/pt_sans"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_desc_crafts"
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_form">
+
+            <Spinner
+                android:id="@+id/spinner_team"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ed_desc"
-                android:textColor="@color/brak_brown"
-                android:inputType="textEmailAddress"
-                android:fontFamily="@font/nunito"
-                android:gravity="top"
-                android:lines="5"/>
+                android:layout_gravity="center"
+                android:entries="@array/category_array"
+                android:textColor="@color/brak_brown" >
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </Spinner>
+        </FrameLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="17dp"
             android:layout_marginEnd="17dp"
             android:text="@string/tv_title_material_tool"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:boxBackgroundColor="@color/designer_white"
-            app:endIconMode="clear_text"
-            app:endIconDrawable="@drawable/ic_delete" >
+            android:orientation="horizontal" >
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/ed_tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:background="@drawable/bg_form"
                 android:hint="@string/ed_tools"
                 android:textColor="@color/brak_brown"
+                android:textSize="16sp"
                 android:inputType="text"
-                android:fontFamily="@font/nunito" />
+                android:fontFamily="@font/pt_sans" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/btn_delete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_delete" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_materials_tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" />
 
         <TextView
             android:id="@+id/btn_add_tools"
@@ -102,6 +127,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:drawableStart="@drawable/ic_plus"
+            android:drawablePadding="10dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="onButtonClick" />
@@ -116,38 +142,33 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/ed_steps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            app:boxBackgroundColor="@color/designer_white"
-            app:endIconMode="clear_text"
-            app:endIconDrawable="@drawable/ic_delete" >
+            android:gravity="start"
+            android:paddingTop="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/bg_form"
+            android:drawableEnd="@drawable/ic_delete"
+            android:lines="2"
+            android:maxLines="2"
+            android:hint="@string/ed_steps"
+            android:textColor="@color/brak_brown"
+            android:textSize="16sp"
+            android:fontFamily="@font/pt_sans"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_steps_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/ed_steps"
-                android:textColor="@color/brak_brown"
-                android:inputType="text"
-                android:fontFamily="@font/nunito"
-                android:gravity="top"
-                android:lines="5" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageButton
-            android:id="@+id/btn_add_img_steps"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_gravity="start"
-            android:background="@color/designer_white"
-            android:src="@drawable/ic_camera" />
+        <LinearLayout
+            android:id="@+id/linear_layout_steps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" />
 
         <TextView
             android:id="@+id/btn_add_steps"
@@ -160,9 +181,10 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:drawableStart="@drawable/ic_plus"
+            android:drawablePadding="10dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="onButtonClick" />
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

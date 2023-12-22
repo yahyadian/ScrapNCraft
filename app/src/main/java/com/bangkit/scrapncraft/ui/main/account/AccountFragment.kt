@@ -36,17 +36,6 @@ class AccountFragment : Fragment() {
         _binding = FragmentAccountBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val viewPager: ViewPager2 = binding.viewPager
-        val tabs: TabLayout = binding.tabs
-
-        val accountSectionPagerAdapter = AccountSectionPagerAdapter(requireActivity())
-        viewPager.adapter = accountSectionPagerAdapter
-
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
-
-        setHasOptionsMenu(true)
         return root
     }
 
